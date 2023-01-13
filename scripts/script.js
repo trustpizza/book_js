@@ -1,8 +1,12 @@
-let myLibrary = ["To Kill a Mockingbird", "Slaughterhouse Five", "Davinci Code"]
+let myLibrary = []
 
-function Book() {
+function Book(author, title, pageCount, wasRead) {
   // Constructor
   // Books have an Author, a Title, A Page Count and a Read(t/f)
+  this.author = author
+  this.title = title
+  this.pageCount = pageCount
+  this.wasRead = wasRead
 }
 
 function addBookToLibrary() {
@@ -15,7 +19,7 @@ function showBooks() {
   for (let i = 0; i < myLibrary.length; i++) {
     let book = myLibrary[i]
 
-    if (book.was_read) {
+    if (book.wasRead) {
       console.log(book.name + "by: " + book.author + ". This book has been read.")
     } else {
     console.log(book.name + "by: " + book.author + ". This book is unread.")
