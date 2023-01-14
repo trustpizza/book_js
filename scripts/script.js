@@ -17,6 +17,7 @@ function Book(author, title, pageCount, wasRead) {
 function addBookToLibrary(book) {
   // Add book to myLibrary
   myLibrary.push(book)
+  localStorage.setItem(book.title, JSON.stringify(book))
 };
 
 function showBooks() {
@@ -26,10 +27,8 @@ function showBooks() {
 
     if (book.wasRead) {
       console.log(book.title + " by: " + book.author + ". This book has been read.")
-      localStorage.setItem(book.title, JSON.stringify(book))
     } else {
       console.log(book.title + "by: " + book.author + ". This book is unread.")
-      localStorage.setItem(book.title, JSON.stringify(book))
     }
   };
 };
