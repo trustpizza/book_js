@@ -17,7 +17,7 @@ function Book(author, title, pageCount, wasRead) {
 function addBookToLibrary(book) {
   // Add book to myLibrary
   myLibrary.push(book)
-  localStorage.setItem(book.title, JSON.stringify(book))
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary))
 };
 
 function showBooks() {
