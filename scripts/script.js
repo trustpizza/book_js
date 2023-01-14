@@ -2,7 +2,7 @@ const showBookButton = document.getElementById("new_book");
 const bookForm = document.getElementById("library");
 let hideBookButton;
 let formSubmitButton;
-let library = []
+let myLibrary = []
 // Library Functions
 
 function Book(author, title, pageCount, wasRead) {
@@ -16,7 +16,7 @@ function Book(author, title, pageCount, wasRead) {
 
 function addBookToLibrary(book) {
   // Add book to myLibrary
-  library.push(book)
+  myLibrary.push(book)
 };
 
 function showBooks() {
@@ -25,9 +25,9 @@ function showBooks() {
     let book = myLibrary[i]
 
     if (book.wasRead) {
-      console.log(book.name + "by: " + book.author + ". This book has been read.")
+      console.log(book.title + " by: " + book.author + ". This book has been read.")
     } else {
-    console.log(book.name + "by: " + book.author + ". This book is unread.")
+    console.log(book.title + "by: " + book.author + ". This book is unread.")
     }
   };
 };
