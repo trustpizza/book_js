@@ -1,3 +1,14 @@
+const showBookButton = document.getElementById("new_book")
+const bookForm = document.getElementById("library")
+
+
+showBookButton.addEventListener("click", () => {
+    bookForm.classList.add("viewable")
+  });
+
+
+// Library Functions
+
 let myLibrary = []
 
 function Book(author, title, pageCount, wasRead) {
