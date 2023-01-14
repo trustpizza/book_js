@@ -15,7 +15,7 @@
     <button id="new_book"> New Book? </button>
     <div id="library" class="library">
       <button id="hide-library">X</button>
-      <form action="" id="library-form">
+      <form action method="post" id="library-form">
         <span class="form-section">
           <label for="title">Title</label>
           <input type="text" id="title" name="title">
@@ -33,7 +33,7 @@
           <input type="checkbox" name="hasRead" id="hasRead">
         </span>
 
-        <input type="submit">
+        <input type="submit" id="submit">
       </form>
     </div>
   </div>

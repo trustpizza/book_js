@@ -1,21 +1,10 @@
 const showBookButton = document.getElementById("new_book");
 const bookForm = document.getElementById("library");
-let hideBookButton = null;
-
-
-showBookButton.addEventListener("click", () => {
-  bookForm.classList.add("viewable")
-  hideBookButton = document.getElementById("hide-library")
-  hideBookButton.addEventListener("click", () => {
-    bookForm.classList.remove("viewable")
-  });
-  
-});
-
+let hideBookButton;
+let formSubmitButton;
+window.localStorage.setItem("library", [])
 
 // Library Functions
-
-let myLibrary = []
 
 function Book(author, title, pageCount, wasRead) {
   // Constructor
@@ -43,3 +32,20 @@ function showBooks() {
     }
   };
 };
+
+// Buttons to work form
+
+showBookButton.addEventListener("click", () => {
+  bookForm.classList.add("viewable");
+
+  hideBookButton = document.getElementById("hide-library");
+  hideBookButton.addEventListener("click", () => {
+    bookForm.classList.remove("viewable")
+  });
+
+  formSubmitButton = document.getElementById("submit");
+  formSubmitButton.addEventListener("click", () => {
+    event.preventDefault()
+  })
+
+});
