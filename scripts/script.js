@@ -2,9 +2,7 @@ const showBookButton = document.getElementById("new_book");
 const bookForm = document.getElementById("library");
 let hideBookButton;
 let formSubmitButton;
-window.localStorage.setItem("library", [])
-let library = localStorage.library
-
+let library = []
 // Library Functions
 
 function Book(author, title, pageCount, wasRead) {
@@ -16,9 +14,9 @@ function Book(author, title, pageCount, wasRead) {
   this.wasRead = wasRead
 };
 
-function addBookToLibrary() {
+function addBookToLibrary(book) {
   // Add book to myLibrary
-  
+  library.push(book)
 };
 
 function showBooks() {
@@ -52,5 +50,9 @@ showBookButton.addEventListener("click", () => {
     let title = document.getElementById("title");
     let pageCount = document.getElementById("pages");
     let wasRead = document.getElementById("wasRead");
+    
+    let book = new Book(author.value, title.value, pageCount.value, wasRead.value)
+    addBookToLibrary(book)
   })
+
 });
