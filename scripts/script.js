@@ -1,10 +1,16 @@
-const showBookButton = document.getElementById("new_book")
-const bookForm = document.getElementById("library")
+const showBookButton = document.getElementById("new_book");
+const bookForm = document.getElementById("library");
+let hideBookButton = null;
 
 
 showBookButton.addEventListener("click", () => {
-    bookForm.classList.add("viewable")
+  bookForm.classList.add("viewable")
+  hideBookButton = document.getElementById("hide-library")
+  hideBookButton.addEventListener("click", () => {
+    bookForm.classList.remove("viewable")
   });
+  
+});
 
 
 // Library Functions
@@ -18,12 +24,12 @@ function Book(author, title, pageCount, wasRead) {
   this.title = title
   this.pageCount = pageCount
   this.wasRead = wasRead
-}
+};
 
 function addBookToLibrary() {
   // Add book to myLibrary
   
-}
+};
 
 function showBooks() {
   // Loops through all books in library and prints their name
@@ -35,5 +41,5 @@ function showBooks() {
     } else {
     console.log(book.name + "by: " + book.author + ". This book is unread.")
     }
-  }
-}
+  };
+};

@@ -7,7 +7,6 @@
 }
 
 .library {
-  display: flex;
   border: 1px solid black;
   width: 400px;
   height: 300px;
@@ -15,10 +14,13 @@
   display: none;
 }
 
-
-
 .viewable {
-  display: block;
+  display: flex;
+  flex-direction: column;
+}
+
+.library > button {
+  align-self: flex-end;
 }
 
 #library-form {
