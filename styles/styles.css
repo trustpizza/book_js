@@ -6,12 +6,19 @@
 
 }
 
-#library {
+.library {
   display: flex;
   border: 1px solid black;
   width: 400px;
   height: 300px;
   padding: 2rem;
+  display: none;
+}
+
+
+
+.viewable {
+  display: block;
 }
 
 #library-form {
