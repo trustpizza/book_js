@@ -15,15 +15,25 @@ function Book(author, title, pageCount, wasRead) {
   this.wasRead = wasRead
 };
 
+function updateLibrary() {
+  myLibrary = JSON.parse(localStorage["myLibrary"]) // Update var myLibrary to include all local storage books
+}
+
+updateLibrary() 
+
 function addBookToLibrary(book) {
   // Add book to myLibrary
-  myLibrary.push(book)
-  localStorage.setItem("myLibrary", JSON.stringify(myLibrary))
+  updateLibrary()
+
+  myLibrary.push(book) // Add book to myLib
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary)) // Set localstorage.myLib to all books
 };
+
+
 
 function showBooks() {
   // Loops through all books in library and prints their name
-  myLibrary = JSON.parse(localStorage["myLibrary"])
+  updateLibrary()
 
   for (let i = 0; i < myLibrary.length; i++) {
     let book = myLibrary[i]
