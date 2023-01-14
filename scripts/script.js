@@ -2,7 +2,8 @@ const showBookButton = document.getElementById("new_book");
 const bookForm = document.getElementById("library");
 let hideBookButton;
 let formSubmitButton;
-let myLibrary = []
+let myLibrary = [];
+
 // Library Functions
 
 function Book(author, title, pageCount, wasRead) {
@@ -22,6 +23,8 @@ function addBookToLibrary(book) {
 
 function showBooks() {
   // Loops through all books in library and prints their name
+  myLibrary = JSON.parse(localStorage["myLibrary"])
+
   for (let i = 0; i < myLibrary.length; i++) {
     let book = myLibrary[i]
 
