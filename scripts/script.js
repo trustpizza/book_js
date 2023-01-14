@@ -26,8 +26,10 @@ function showBooks() {
 
     if (book.wasRead) {
       console.log(book.title + " by: " + book.author + ". This book has been read.")
+      localStorage.setItem(book.title, JSON.stringify(book))
     } else {
-    console.log(book.title + "by: " + book.author + ". This book is unread.")
+      console.log(book.title + "by: " + book.author + ". This book is unread.")
+      localStorage.setItem(book.title, JSON.stringify(book))
     }
   };
 };
@@ -50,7 +52,7 @@ showBookButton.addEventListener("click", () => {
     let title = document.getElementById("title");
     let pageCount = document.getElementById("pages");
     let wasRead = document.getElementById("wasRead");
-    
+
     let book = new Book(author.value, title.value, pageCount.value, wasRead.value)
     addBookToLibrary(book)
   })
