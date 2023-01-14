@@ -3,6 +3,7 @@ const bookForm = document.getElementById("library");
 let hideBookButton;
 let formSubmitButton;
 window.localStorage.setItem("library", [])
+let library = localStorage.library
 
 // Library Functions
 
@@ -46,6 +47,10 @@ showBookButton.addEventListener("click", () => {
   formSubmitButton = document.getElementById("submit");
   formSubmitButton.addEventListener("click", () => {
     event.preventDefault()
-  })
 
+    let author = document.getElementById("author");
+    let title = document.getElementById("title");
+    let pageCount = document.getElementById("pages");
+    let wasRead = document.getElementById("wasRead");
+  })
 });
