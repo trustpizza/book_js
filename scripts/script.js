@@ -22,7 +22,9 @@ function Book(author, title, pageCount, hasRead) {
 // This down below is broken
 
 function updateLibrary() {
-  myLibrary = JSON.parse(localStorage["myLibrary"]) // Update var myLibrary to include all local storage books
+  if (localStorage.myLibrary) {
+    myLibrary = JSON.parse(localStorage["myLibrary"]) // Update var myLibrary to include all local storage books
+  }
 };
 
 

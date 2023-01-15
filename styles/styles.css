@@ -35,3 +35,13 @@
   display: flex;
   justify-content: space-between;
 }
+
+/* Shows each book */
+
+.card {
+  border: 1px solid black;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
