@@ -5,22 +5,25 @@ let hideBookButton; // Button to hide book form
 let formSubmitButton; // Button to submit book form
 let myLibrary = []; // Array of each book obj
 
+
 // Library Functions
 
-function Book(author, title, pageCount, wasRead) {
+function Book(author, title, pageCount, hasRead) {
   // Constructor
   // Books have an Author, a Title, A Page Count and a Read(t/f)
   this.author = author
   this.title = title
   this.pageCount = pageCount
-  this.wasRead = wasRead
+  this.hasRead = hasRead
 };
+
+// This down below is broken
 
 function updateLibrary() {
   myLibrary = JSON.parse(localStorage["myLibrary"]) // Update var myLibrary to include all local storage books
-}
+};
 
-updateLibrary() 
+updateLibrary()  
 
 function addBookToLibrary(book) {
   // Add book to myLibrary
@@ -31,22 +34,34 @@ function addBookToLibrary(book) {
 };
 
 function createBookDiv(book) {
-  let newDiv = document.createElement("div")
-  newDiv.classList.add("card")
+  let newDiv = document.createElement("div");
+  newDiv.classList.add("card");
 
-  let libraryDiv = document.getElementById("library")
+  let title = document.createElement("div");
+  let author = document.createElement("div");
+  let pageCount = document.createElement("div");
+  let hasRead = document.createElement("div");
 
-  libraryDiv.appendChild(newDiv) // Add new div to library
+  title.innerHTML = book["title"];
+  author.innerHTML = book["author"];
+  pageCount.innerHTML = book["pageCount"]
+  hasRead.innerHTML = book["hasRead"]
+
+
+  let libraryDiv = document.getElementById("library");
+
+  libraryDiv.appendChild(newDiv); // Add new div to library
 
 }
 
 function showBooks() {
   // Loops through all books in library and prints their name
-  updateLibrary()
+  updateLibrary();
 
   for (let i = 0; i < myLibrary.length; i++) {
     let book = myLibrary[i]
     
+    createBookDiv(book)
     //take each book
     // Create a div nested inside #library
     // Place that book's contents inside that div
@@ -72,10 +87,9 @@ showBookButton.addEventListener("click", () => {
     let author = document.getElementById("author");
     let title = document.getElementById("title");
     let pageCount = document.getElementById("pages");
-    let wasRead = document.getElementById("wasRead");
+    let hasRead = document.getElementById("hasRead");
 
-    let book = new Book(author.value, title.value, pageCount.value, wasRead.value)
+    let book = new Book(author.value, title.value, pageCount.value, hasRead.value)
     addBookToLibrary(book)
   })
-
 });
