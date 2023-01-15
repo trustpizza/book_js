@@ -1,5 +1,7 @@
 const showBookButton = document.getElementById("new_book");
 const bookForm = document.getElementById("form");
+let libraryDiv = document.getElementById("library");
+
 
 let hideBookButton; // Button to hide book form
 let formSubmitButton; // Button to submit book form
@@ -23,17 +25,18 @@ function updateLibrary() {
   myLibrary = JSON.parse(localStorage["myLibrary"]) // Update var myLibrary to include all local storage books
 };
 
-updateLibrary()  
 
 function addBookToLibrary(book) {
   // Add book to myLibrary
-  updateLibrary()
 
   myLibrary.push(book) // Add book to myLib
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary)) // Set localstorage.myLib to all books
+  updateLibrary()
 };
 
 function createBookDiv(book) {
+  updateLibrary()
+
   let newDiv = document.createElement("div");
   newDiv.classList.add("card");
 
@@ -47,11 +50,12 @@ function createBookDiv(book) {
   pageCount.innerHTML = book["pageCount"]
   hasRead.innerHTML = book["hasRead"]
 
-
-  let libraryDiv = document.getElementById("library");
+  newDiv.appendChild(title);
+  newDiv.appendChild(author);
+  newDiv.appendChild(pageCount);
+  newDiv.appendChild(hasRead);
 
   libraryDiv.appendChild(newDiv); // Add new div to library
-
 }
 
 function showBooks() {
