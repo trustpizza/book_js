@@ -31,12 +31,10 @@ function addBookToLibrary(book) {
 
   myLibrary.push(book) // Add book to myLib
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary)) // Set localstorage.myLib to all books
-  updateLibrary()
+  updateLibrary();
 };
 
 function createBookDiv(book) {
-  updateLibrary()
-
   let newDiv = document.createElement("div");
   newDiv.classList.add("card");
 
@@ -47,8 +45,8 @@ function createBookDiv(book) {
 
   title.innerHTML = book["title"];
   author.innerHTML = book["author"];
-  pageCount.innerHTML = book["pageCount"]
-  hasRead.innerHTML = book["hasRead"]
+  pageCount.innerHTML = book["pageCount"];
+  hasRead.innerHTML = book["hasRead"];
 
   newDiv.appendChild(title);
   newDiv.appendChild(author);
