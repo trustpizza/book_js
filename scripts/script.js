@@ -1,8 +1,9 @@
 const showBookButton = document.getElementById("new_book");
-const bookForm = document.getElementById("library");
-let hideBookButton;
-let formSubmitButton;
-let myLibrary = [];
+const bookForm = document.getElementById("form");
+
+let hideBookButton; // Button to hide book form
+let formSubmitButton; // Button to submit book form
+let myLibrary = []; // Array of each book obj
 
 // Library Functions
 
@@ -29,7 +30,15 @@ function addBookToLibrary(book) {
   localStorage.setItem("myLibrary", JSON.stringify(myLibrary)) // Set localstorage.myLib to all books
 };
 
+function createBookDiv(book) {
+  let newDiv = document.createElement("div")
+  newDiv.classList.add("card")
 
+  let libraryDiv = document.getElementById("library")
+
+  libraryDiv.appendChild(newDiv) // Add new div to library
+
+}
 
 function showBooks() {
   // Loops through all books in library and prints their name
@@ -37,12 +46,12 @@ function showBooks() {
 
   for (let i = 0; i < myLibrary.length; i++) {
     let book = myLibrary[i]
-
-    if (book.wasRead) {
-      console.log(book.title + " by: " + book.author + ". This book has been read.")
-    } else {
-      console.log(book.title + "by: " + book.author + ". This book is unread.")
-    }
+    
+    //take each book
+    // Create a div nested inside #library
+    // Place that book's contents inside that div
+    // Repeat
+    
   };
 };
 

@@ -6,7 +6,7 @@
 
 }
 
-.library {
+.form {
   border: 1px solid black;
   width: 400px;
   height: 300px;
@@ -19,7 +19,7 @@
   flex-direction: column;
 }
 
-.library > button {
+.form > button {
   align-self: flex-end;
 }
 
