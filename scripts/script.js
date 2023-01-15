@@ -45,10 +45,10 @@ function createBookDiv(book) {
   let pageCount = document.createElement("div");
   let hasRead = document.createElement("div");
 
-  title.innerHTML = book["title"];
-  author.innerHTML = book["author"];
-  pageCount.innerHTML = book["pageCount"];
-  hasRead.innerHTML = book["hasRead"];
+  title.innerHTML = "Title: " + book["title"];
+  author.innerHTML = "Author: " + book["author"];
+  pageCount.innerHTML = "Page Count: " + book["pageCount"];
+  hasRead.innerHTML = "Read? " + book["hasRead"];
 
   newDiv.appendChild(title);
   newDiv.appendChild(author);
@@ -95,7 +95,7 @@ showBookButton.addEventListener("click", () => {
     let pageCount = document.getElementById("pages");
     let hasRead = document.getElementById("hasRead");
 
-    let book = new Book(author.value, title.value, pageCount.value, hasRead.value)
+    let book = new Book(author.value, title.value, pageCount.value, hasRead.checked)
     addBookToLibrary(book)
    
     resetBooks() // Prevents duplicates
