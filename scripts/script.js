@@ -64,15 +64,17 @@ function showBooks() {
     let book = myLibrary[i]
     
     createBookDiv(book)
-    //take each book
-    // Create a div nested inside #library
-    // Place that book's contents inside that div
-    // Repeat
-    
   };
 };
 
+function resetBooks() {
+  updateLibrary();
+
+  libraryDiv.innerHTML = ""
+}
+
 // Buttons to work form
+showBooks()
 
 showBookButton.addEventListener("click", () => {
   bookForm.classList.add("viewable");
@@ -93,5 +95,8 @@ showBookButton.addEventListener("click", () => {
 
     let book = new Book(author.value, title.value, pageCount.value, hasRead.value)
     addBookToLibrary(book)
+   
+    resetBooks() // Prevents duplicates
+    showBooks()
   })
 });
