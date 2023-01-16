@@ -64,7 +64,7 @@ function addDeleteButton(bookDiv) {
   deleteButton.innerText = "Delete Book"
   
   deleteButton.addEventListener("click", () => {
-    console.log(bookDiv)
+    bookDiv.remove();
   })
 
   bookDiv.appendChild(deleteButton);
