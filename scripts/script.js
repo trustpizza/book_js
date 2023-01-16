@@ -53,7 +53,8 @@ function createBookDiv(book, index) {
   title.innerHTML = "Title: " + book["title"];
   author.innerHTML = "Author: " + book["author"];
   pageCount.innerHTML = "Page Count: " + book["pageCount"];
-  hasRead.innerHTML = "Read? " + book["hasRead"];
+  hasRead.innerHTML = "Read?: ";
+  addReadButton(hasRead, index);
 
   newDiv.appendChild(title);
   newDiv.appendChild(author);
@@ -71,18 +72,34 @@ function addDeleteButton(bookDiv, index) {
     bookDiv.remove();
 
     myLibrary.splice(index, index+1);
-    setLocalStorageLibrary(myLibrary)
+    setLocalStorageLibrary(myLibrary);
   })
 
   bookDiv.appendChild(deleteButton);
 }
 
-function addReadButton(bookDiv, index) {
+function addReadButton(div, index) {
   let readButton = document.createElement("button")
   let book = myLibrary[index]
   readButton.innerHTML = book["hasRead"]
 
-  bookDiv.appendChild(readButton);
+  readButton.addEventListener("click", () => {
+    if (book["hasRead"] === true) {
+      book["hasRead"] = false
+      myLibrary[index] = book
+
+      setLocalStorageLibrary(myLibrary)
+      location.reload()
+    } else {
+      book["hasRead"] = true
+      myLibrary[index] = book
+
+      setLocalStorageLibrary(myLibrary)
+      location.reload()
+    }
+  });
+
+  div.appendChild(readButton);
 }
 
 function showBooks() {
