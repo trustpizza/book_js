@@ -23,16 +23,25 @@ function Book(author, title, pageCount, hasRead) {
 
 Book.prototype.changeReadStatus = function() {
   if (this.hasRead === true) {
-    this.hasRead = false 
+    this.hasRead = false; 
   } else {
-    this.hasRead = true
-  }
-}
+    this.hasRead = true;
+  };
+};
 
-// This down below is broken
+function addBookToLibrary(book) {
+  myLibrary.push(book)
+};
 
-function updateLibrary() {
-  if (localStorage.myLibrary) {
-    myLibrary = JSON.parse(localStorage["myLibrary"]) // Update var myLibrary to include all local storage books
-  }
+function displayLibrary(library) {
+  for (let i = 0; i < library.length; i++) {
+    let book = library[i];
+    // Create a div showing the elements of each library element
+
+  };
+};
+
+function displayBook(book) {
+  let bookDiv = document.createElement("div");
+  bookDiv.classList.add("card")
 };
