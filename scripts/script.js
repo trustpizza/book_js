@@ -59,15 +59,33 @@ function createBookDiv(book, index) {
   libraryDiv.appendChild(newDiv); // Add new div to library
 }
 
+function addDeleteButton(bookDiv) {
+  let deleteButton = document.createElement("button")
+  deleteButton.innerText = "Delete Book"
+  
+  deleteButton.addEventListener("click", () => {
+    console.log(bookDiv)
+  })
+
+  bookDiv.appendChild(deleteButton);
+}
+
 function showBooks() {
   // Loops through all books in library and prints their name
   updateLibrary();
 
   for (let i = 0; i < myLibrary.length; i++) {
     let book = myLibrary[i]
-    
+
     createBookDiv(book, i)
   };
+
+  let library = libraryDiv.children
+
+  for (let i = 0; i < myLibrary.length; i++) {
+    addDeleteButton(library[i])
+  }
+
 };
 
 function resetBooks() {
