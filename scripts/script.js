@@ -77,6 +77,14 @@ function addDeleteButton(bookDiv, index) {
   bookDiv.appendChild(deleteButton);
 }
 
+function addReadButton(bookDiv, index) {
+  let readButton = document.createElement("button")
+  let book = myLibrary[index]
+  readButton.innerHTML = book["hasRead"]
+
+  bookDiv.appendChild(readButton);
+}
+
 function showBooks() {
   // Loops through all books in library and prints their name
   updateLibrary();
