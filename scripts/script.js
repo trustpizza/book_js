@@ -36,9 +36,10 @@ function addBookToLibrary(book) {
   updateLibrary();
 };
 
-function createBookDiv(book) {
+function createBookDiv(book, index) {
   let newDiv = document.createElement("div");
   newDiv.classList.add("card");
+  newDiv.classList.add("card-" + index)
 
   let title = document.createElement("div");
   let author = document.createElement("div");
@@ -65,7 +66,7 @@ function showBooks() {
   for (let i = 0; i < myLibrary.length; i++) {
     let book = myLibrary[i]
     
-    createBookDiv(book)
+    createBookDiv(book, i)
   };
 };
 
