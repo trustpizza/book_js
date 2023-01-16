@@ -41,6 +41,7 @@
 .card {
   border: 1px solid black;
   height: 200px;
+  width: 400px;
   display: grid;
   grid-template-rows: repeat(4, 1fr);
 }

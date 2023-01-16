@@ -7,6 +7,14 @@ let hideBookButton; // Button to hide book form
 let formSubmitButton; // Button to submit book form
 let myLibrary = []; // Array of each book obj
 
+// Populate some prefab books
+
+function prepopulateLibrary() {
+  let book = new Book('Author', 'Title', 123, false);
+  addBookToLibrary(book);
+};
+
+prepopulateLibrary()
 
 // Library Functions
 
@@ -18,7 +26,6 @@ function Book(author, title, pageCount, hasRead) {
   this.pageCount = pageCount
   this.hasRead = hasRead
 };
-
 // Add change function to change status
 
 Book.prototype.changeReadStatus = function() {
@@ -37,11 +44,15 @@ function displayLibrary(library) {
   for (let i = 0; i < library.length; i++) {
     let book = library[i];
     // Create a div showing the elements of each library element
-
+    displayBook(book)
   };
 };
 
 function displayBook(book) {
   let bookDiv = document.createElement("div");
-  bookDiv.classList.add("card")
+  bookDiv.classList.add("card");
+
+  
+
+  libraryDiv.appendChild(bookDiv)
 };
