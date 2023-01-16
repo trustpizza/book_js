@@ -32,9 +32,13 @@ function addBookToLibrary(book) {
   // Add book to myLibrary
 
   myLibrary.push(book) // Add book to myLib
-  localStorage.setItem("myLibrary", JSON.stringify(myLibrary)) // Set localstorage.myLib to all books
+  setLocalStorageLibrary(myLibrary) // Set localstorage.myLib to all books
   updateLibrary();
 };
+
+function setLocalStorageLibrary(library) {
+  localStorage.setItem("myLibrary", JSON.stringify(library));
+}
 
 function createBookDiv(book, index) {
   let newDiv = document.createElement("div");
@@ -59,12 +63,15 @@ function createBookDiv(book, index) {
   libraryDiv.appendChild(newDiv); // Add new div to library
 }
 
-function addDeleteButton(bookDiv) {
+function addDeleteButton(bookDiv, index) {
   let deleteButton = document.createElement("button")
   deleteButton.innerText = "Delete Book"
   
   deleteButton.addEventListener("click", () => {
     bookDiv.remove();
+
+    myLibrary.splice(index, index+1);
+    setLocalStorageLibrary(myLibrary)
   })
 
   bookDiv.appendChild(deleteButton);
@@ -83,7 +90,7 @@ function showBooks() {
   let library = libraryDiv.children
 
   for (let i = 0; i < myLibrary.length; i++) {
-    addDeleteButton(library[i])
+    addDeleteButton(library[i], i)
   }
 
 };
