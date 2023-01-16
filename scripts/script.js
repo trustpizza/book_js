@@ -52,7 +52,25 @@ function displayBook(book) {
   let bookDiv = document.createElement("div");
   bookDiv.classList.add("card");
 
-  
+  // Add 5 divs, 1 for Title, Author, PageCount, HasRead status, and Delete button
+  // Write a funciton that goes through each of the properties
+  for (const property in book) {
+    if (Object.hasOwnProperty.call(book, property)) {
+      const element = book[property];
+      let div = document.createElement("div");
+      let item = document.createElement("div");
+      let value = document.createElement("div");
+      
+      item.innerHTML = `${property.toUpperCase()}: `;
+      value.innerHTML = `${element}`;
 
+      div.appendChild(item);
+      div.appendChild(value);
+
+      div.classList.add("card-item");
+
+      bookDiv.appendChild(div);
+    }
+  }
   libraryDiv.appendChild(bookDiv)
 };
