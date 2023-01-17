@@ -9,7 +9,7 @@ let myLibrary = []; // Array of each book obj
 // Populate some prefab books
 
 function prepopulateLibrary() {
-  let book = new Book('Author', 'Title', 123, false);
+  let book = new Book('Author', 'Title', 123, true);
   addBookToLibrary(book);
 };
 
@@ -60,18 +60,31 @@ function resetLibraryDiv() {
 function displayBook(book) {
   let bookDiv = document.createElement("div");
   bookDiv.classList.add("card");
-
+  let div = document.createElement("div");
+  
   // Add 5 divs, 1 for Title, Author, PageCount, HasRead status, and Delete button
   // Write a funciton that goes through each of the properties
   for (const property in book) {
     if (Object.hasOwnProperty.call(book, property)) {
-      const element = book[property];
+      let element = book[property];
       let div = document.createElement("div");
       let item = document.createElement("div");
       let value = document.createElement("div");
       
       item.innerHTML = `${property.toUpperCase()}: `;
-      value.innerHTML = `${element}`;
+      
+      if (property == 'hasRead') {
+        value = document.createElement("button");
+        value.innerHTML = `${element}`;
+
+        value.addEventListener("click", () => {
+          book.changeReadStatus();
+          displayLibrary();
+        });
+      } else {
+        value.innerHTML = `${element}`;
+      };
+      
 
       div.appendChild(item);
       div.appendChild(value);
@@ -80,6 +93,21 @@ function displayBook(book) {
 
       bookDiv.appendChild(div);
     }
-  }
+  };
+
+  // Add delete button
+
+  let deleteButton = document.createElement("button");
+  deleteButton.innerHTML = "X";
+
+  deleteButton.addEventListener("click", () => {
+    let el = (el) => el == book;
+    let i = myLibrary.findIndex(el);
+    myLibrary.splice(i, i+1);
+    displayLibrary();
+  });
+
+  div.appendChild(deleteButton);
+  bookDiv.appendChild(div);
   libraryDiv.appendChild(bookDiv)
 };
