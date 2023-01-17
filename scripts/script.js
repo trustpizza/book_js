@@ -1,19 +1,24 @@
-const showBookButton = document.getElementById("new_book");
+const showBookButton = document.getElementById("new-book");
 const bookForm = document.getElementById("form");
-let libraryDiv = document.getElementById("library");
+const libraryDiv = document.getElementById("library");
+const hideBookButton = document.getElementById("hide-form"); // Button to hide book form
+const formSubmitButton = document.getElementById("submit");  // Button to submit book form
 
-let hideBookButton; // Button to hide book form
-let formSubmitButton; // Button to submit book form
 let myLibrary = []; // Array of each book obj
 
-// Populate some prefab books
+// Create New Book Button
 
-function prepopulateLibrary() {
-  let book = new Book('Author', 'Title', 123, true);
-  addBookToLibrary(book);
-};
+showBookButton.addEventListener("click", () => {
+  bookForm.classList.add("viewable");
+})
 
-prepopulateLibrary()
+hideBookButton.addEventListener("click", () => {
+  bookForm.classList.remove("viewable")
+})
+
+formSubmitButton.addEventListener("click", () => {
+  
+})
 
 // Library Functions
 
@@ -65,7 +70,7 @@ function displayBook(book) {
   let bookDiv = document.createElement("div");
   bookDiv.classList.add("card");
   let div = document.createElement("div");
-  
+
   // Add delete button
 
   let deleteButton = document.createElement("button");
