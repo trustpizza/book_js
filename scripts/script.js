@@ -2,7 +2,7 @@ const showBookButton = document.getElementById("new-book");
 const bookForm = document.getElementById("form");
 const libraryDiv = document.getElementById("library");
 const hideBookButton = document.getElementById("hide-form"); // Button to hide book form
-const formSubmitButton = document.getElementById("submit");  // Button to submit book form
+//const formSubmitButton = document.getElementById("submit");  // Button to submit book form
 
 let myLibrary = []; // Array of each book obj
 
@@ -16,8 +16,20 @@ hideBookButton.addEventListener("click", () => {
   bookForm.classList.remove("viewable")
 })
 
-formSubmitButton.addEventListener("click", () => {
-  event.preventDefault()
+bookForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  let formValues = event.target.elements
+
+  let newBook = new Book (
+    formValues.author.value,
+    formValues.title.value,
+    formValues.pages.value,
+    formValues.hasRead.checked
+  );
+
+  myLibrary.push(newBook);
+  resetLibraryDiv();
+  displayLibrary();
 })
 
 // Library Functions
