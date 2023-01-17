@@ -17,7 +17,7 @@ hideBookButton.addEventListener("click", () => {
 })
 
 formSubmitButton.addEventListener("click", () => {
-  
+  event.preventDefault()
 })
 
 // Library Functions
