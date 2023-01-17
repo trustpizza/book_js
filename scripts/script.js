@@ -35,6 +35,10 @@ Book.prototype.changeReadStatus = function() {
   };
 };
 
+Book.prototype.delete = function() {
+  myLibrary.splice(myLibrary.indexOf(self));
+};
+
 function addBookToLibrary(book) {
   myLibrary.push(book)
 };
@@ -62,6 +66,18 @@ function displayBook(book) {
   bookDiv.classList.add("card");
   let div = document.createElement("div");
   
+  // Add delete button
+
+  let deleteButton = document.createElement("button");
+  deleteButton.innerHTML = "X";
+
+  deleteButton.addEventListener("click", () => {
+    book.delete();
+    displayLibrary();
+  });
+
+  div.appendChild(deleteButton);
+  bookDiv.appendChild(div);
   // Add 5 divs, 1 for Title, Author, PageCount, HasRead status, and Delete button
   // Write a funciton that goes through each of the properties
   for (const property in book) {
@@ -95,19 +111,6 @@ function displayBook(book) {
     }
   };
 
-  // Add delete button
 
-  let deleteButton = document.createElement("button");
-  deleteButton.innerHTML = "X";
-
-  deleteButton.addEventListener("click", () => {
-    let el = (el) => el == book;
-    let i = myLibrary.findIndex(el);
-    myLibrary.splice(i, i+1);
-    displayLibrary();
-  });
-
-  div.appendChild(deleteButton);
-  bookDiv.appendChild(div);
   libraryDiv.appendChild(bookDiv)
 };
