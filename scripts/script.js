@@ -2,7 +2,6 @@ const showBookButton = document.getElementById("new_book");
 const bookForm = document.getElementById("form");
 let libraryDiv = document.getElementById("library");
 
-
 let hideBookButton; // Button to hide book form
 let formSubmitButton; // Button to submit book form
 let myLibrary = []; // Array of each book obj
@@ -40,13 +39,23 @@ function addBookToLibrary(book) {
   myLibrary.push(book)
 };
 
-function displayLibrary(library) {
-  for (let i = 0; i < library.length; i++) {
-    let book = library[i];
+// Functions to populate the library
+
+displayLibrary() // potentially worth getting rid of the library requirement
+
+function displayLibrary() {
+  resetLibraryDiv();
+
+  for (let i = 0; i < myLibrary.length; i++) {
+    let book = myLibrary[i];
     // Create a div showing the elements of each library element
     displayBook(book)
   };
 };
+
+function resetLibraryDiv() {
+  libraryDiv.innerHTML = null
+}
 
 function displayBook(book) {
   let bookDiv = document.createElement("div");
