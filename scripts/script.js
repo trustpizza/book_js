@@ -34,15 +34,20 @@ bookForm.addEventListener("submit", (event) => {
 
 // Library Functions
 
-function Book(author, title, pageCount, hasRead) {
+class Book {
   // Constructor
+  constructor(author, title, pageCount, hasRead) {
+    this.author = author
+    this.title = title
+    this.pageCount = pageCount
+    this.hasRead = hasRead
+  }
   // Books have an Author, a Title, A Page Count and a Read(t/f)
-  this.author = author
-  this.title = title
-  this.pageCount = pageCount
-  this.hasRead = hasRead
+
 };
 // Add change function to change status
+
+
 
 Book.prototype.changeReadStatus = function() {
   if (this.hasRead === true) {
